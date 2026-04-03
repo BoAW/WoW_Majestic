@@ -18,8 +18,8 @@
         Label7 = "  status - Comprobar el estado de las misiones",
         Label8 = "  way - Comprobar estado, añadir puntos incompletos y eliminar completados",
         ClearDone = "Puntos de Majestic (TomTom) eliminados.",
-        VersionLoaded = "Majestic versi\195\179n %s",
-        NoTomTom = "Majestic: TomTom no est\195\161 instalado. Las funciones de ruta no estar\195\161n disponibles.",
+        VersionLoaded = "Majestic versión %s",
+        NoTomTom = "Majestic: TomTom no está instalado. Las funciones de ruta no estarán disponibles.",
         DebugPrefix = "Majestic depuración: ",
         DebugOn  = "ACTIVADO",
         DebugOff = "DESACTIVADO"

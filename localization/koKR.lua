@@ -1,4 +1,4 @@
-﻿Majestic_Locale_koKR = {
+﻿﻿Majestic_Locale_koKR = {
     Build = {
         Version = "버전",
         Build = "빌드",
@@ -21,8 +21,8 @@
         VersionLoaded = "Majestic 버전 %s",
         NoTomTom = "Majestic: TomTom이 설치되지 않았습니다. 경유지 기능을 사용할 수 없습니다.",
         DebugPrefix = "Majestic 디버그: ",
-        DebugOn  = "켜집",
-        DebugOff = "끄집"
+        DebugOn  = "켜짐",
+        DebugOff = "꺼짐"
     },
     Zones = {
         Eversong = "Eversong (장로 유령발톱)",

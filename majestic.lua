@@ -152,14 +152,34 @@ local function MajesticCheckLureTooltip(tooltip, data)
         ov:Hide()
     end
 
-    if not (data and data.id and data.id > 0) then return end
+    -- Resolve spell/item ID from either TooltipDataProcessor (data.id) or
+    -- legacy HookScript (no data — extract from the tooltip directly).
+    local spellItemID
+    if data and data.id and data.id > 0 then
+        spellItemID = data.id
+    else
+        -- OnTooltipSetSpell: tooltip:GetSpell() returns name, rank, spellID
+        local _, _, sid = tooltip:GetSpell()
+        if sid and sid > 0 then
+            spellItemID = sid
+        else
+            -- OnTooltipSetItem: tooltip:GetItem() returns name, link
+            local _, link = tooltip:GetItem()
+            if link then
+                spellItemID = select(2, link:find("|Hitem:(%d+)"))
+                spellItemID = spellItemID and tonumber(spellItemID)
+            end
+        end
+    end
 
-    local idx = lureSpellIDs[data.id]
+    if not (spellItemID and spellItemID > 0) then return end
 
-    if majesticDebug and data.id ~= majesticLastDebugID then
-        majesticLastDebugID = data.id
+    local idx = lureSpellIDs[spellItemID]
+
+    if majesticDebug and spellItemID ~= majesticLastDebugID then
+        majesticLastDebugID = spellItemID
         DEFAULT_CHAT_FRAME:AddMessage(
-            "|cffaaaaaa[Majestic] id=" .. data.id
+            "|cffaaaaaa[Majestic] id=" .. spellItemID
             .. (idx and " |cff00ff00MATCHED|r" or " no match")
             .. "|r")
     end

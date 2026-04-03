@@ -19,7 +19,7 @@
         Label8 = "  way - Controlla stato, aggiungi punti incompleti e rimuovi completati",
         ClearDone = "Punti Majestic (TomTom) rimossi.",
         VersionLoaded = "Majestic versione %s",
-        NoTomTom = "Majestic: TomTom non \195\168 installato. Le funzioni di punto di percorso non saranno disponibili.",
+        NoTomTom = "Majestic: TomTom non è installato. Le funzioni di punto di percorso non saranno disponibili.",
         DebugPrefix = "Majestic debug: ",
         DebugOn  = "ATTIVO",
         DebugOff = "DISATTIVO"

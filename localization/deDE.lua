@@ -19,7 +19,7 @@
         Label8 = "  way - Status prüfen, Wegpunkte für offene hinzufügen und erledigte entfernen",
         ClearDone = "Majestic-Wegpunkte (TomTom) wurden entfernt.",
         VersionLoaded = "Majestic Version %s",
-        NoTomTom = "Majestic: TomTom ist nicht installiert. Wegpunkt-Funktionen sind nicht verf\195\188gbar.",
+        NoTomTom = "Majestic: TomTom ist nicht installiert. Wegpunkt-Funktionen sind nicht verfügbar.",
         DebugPrefix = "Majestic-Debug: ",
         DebugOn  = "AN",
         DebugOff = "AUS"

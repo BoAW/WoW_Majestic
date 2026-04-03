@@ -1,4 +1,4 @@
-﻿Majestic_Locale_frFR = {
+﻿﻿Majestic_Locale_frFR = {
     Build = {
         Version = "Version",
         Build = "Version de compilation",
@@ -17,9 +17,9 @@
         Label6 = "  details - Afficher la version de l'addon, les informations de compilation et le statut de la localisation",
         Label7 = "  status - Vérifier le statut des quêtes",
         Label8 = "  way - Vérifier le statut, ajouter les points incomplets et supprimer les complétés",
-        ClearDone = "Points de passage Majestic (TomTom) supprim\195\169s.",
+        ClearDone = "Points de passage Majestic (TomTom) supprimés.",
         VersionLoaded = "Majestic version %s",
-        NoTomTom = "Majestic : TomTom n'est pas install\195\169. Les fonctions de rep\195\168re ne seront pas disponibles.",
+        NoTomTom = "Majestic : TomTom n'est pas installé. Les fonctions de repère ne seront pas disponibles.",
         DebugPrefix = "Majestic débogage : ",
         DebugOn  = "ACTIVÉ",
         DebugOff = "DÉSACTIVÉ"
