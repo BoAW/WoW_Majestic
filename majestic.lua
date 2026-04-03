@@ -2,20 +2,12 @@ local q = {88545, 88526, 88531, 88532, 88524}
 local locale = GetLocale()
 local L = _G["Majestic_Locale_" .. locale] or Majestic_Locale_enUS
 
-local buildVersion, buildNumber, buildDate, interfaceVersion = GetBuildInfo()
 local addonVersion = C_AddOns.GetAddOnMetadata("Majestic", "Version") or "?"
 
 local monthAbbrevToIndex = {
     Jan = 1, Feb = 2, Mar = 3, Apr = 4, May = 5, Jun = 6,
     Jul = 7, Aug = 8, Sep = 9, Oct = 10, Nov = 11, Dec = 12
 }
-
-local month, day, year = buildDate:match("(%a+)%s+(%d+)%s+(%d+)")
-if month and day and year then
-    local monthIndex = monthAbbrevToIndex[month]
-    local monthName = monthIndex and L.Build.MonthNames and L.Build.MonthNames[monthIndex] or month
-    buildDate = string.format("%d %s %s", tonumber(day), monthName, year)
-end
 
 local n = {L.Zones.Eversong, L.Zones.ZulAman, L.Zones.Harandar, L.Zones.Voidstorm, L.Zones.GrandBeast}
 local waypoints = {
@@ -66,15 +58,6 @@ local function Majestic_SlashHandler(msg)
             local line = L.Help and L.Help["Label" .. i]
             if line then DEFAULT_CHAT_FRAME:AddMessage(line) end
         end
-    elseif msg == "details" then
-        DEFAULT_CHAT_FRAME:AddMessage(
-            string.format("%s: %s | %s: %s | %s: %s | %s: %s",
-                L.Build.Version, addonVersion,
-                L.Build.Build, buildNumber,
-                L.Build.Interface, interfaceVersion,
-                L.Build.Date, buildDate)
-        )
-        DEFAULT_CHAT_FRAME:AddMessage(string.format(L.Build.LocalizationLoaded, locale))
     elseif msg == "clear" then
         if TomTom then
             for i, uid in pairs(activeWaypoints) do
