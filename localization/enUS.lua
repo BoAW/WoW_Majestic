@@ -37,5 +37,7 @@ Majestic_Locale_enUS = {
     Tooltip = {
         UsedToday = "Skinned today",
         Available  = "Available",
-          WaypointAdd    = "[+] Waypoint",
-          WaypointRemove = "[x] Waypoint",
+        WaypointAdd    = "[+] Waypoint",
+        WaypointRemove = "[x] Waypoint",
+    },
+}
