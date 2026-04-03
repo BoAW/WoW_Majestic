@@ -1,4 +1,4 @@
-﻿﻿Majestic_Locale_koKR = {
+﻿Majestic_Locale_koKR = {
     Build = {
         Version = "버전",
         Build = "빌드",

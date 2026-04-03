@@ -1,4 +1,4 @@
-﻿﻿Majestic_Locale_frFR = {
+﻿Majestic_Locale_frFR = {
     Build = {
         Version = "Version",
         Build = "Version de compilation",
