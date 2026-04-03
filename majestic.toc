@@ -1,8 +1,9 @@
 ## Interface: 120001
-## Title: Majestic
+## Title: Majestic Lure
 ## Author: Pocahuntress (Alonsus)
 ## Version: 0.2.0
 ## Notes: Majestic beast lure tracker with TomTom waypoints.
+## IconTexture: 4621573
 ## OptionalDeps: TomTom
 
 localization/enUS.lua
