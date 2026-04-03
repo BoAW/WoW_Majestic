@@ -17,7 +17,12 @@ Majestic_Locale_enUS = {
         Label6 = "  details - Show add-on version, build information and localization status",
         Label7 = "  status - Check quest status",
         Label8 = "  way - Check status, add waypoints for incomplete and remove completed",
-        ClearDone = "Majestic waypoints (TomTom) cleared."
+        ClearDone = "Majestic waypoints (TomTom) cleared.",
+        VersionLoaded = "Majestic version %s",
+        NoTomTom = "Majestic: TomTom is not installed. Waypoint features will not work.",
+        DebugPrefix = "Majestic debug: ",
+        DebugOn  = "ON",
+        DebugOff = "OFF"
     },
     Zones = {
         Eversong = "Eversong (Ghostclaw Elder)",
@@ -25,5 +30,12 @@ Majestic_Locale_enUS = {
         Harandar = "Harandar (Lumenfin)",
         Voidstorm = "Voidstorm (Umbrafang)",
         ZulAman = "Zul'Aman (Silverscale)",
-    },
-}
+    },    -- Keywords matched (case-insensitive substring) against the tooltip title
+    -- of lure spells/items in the Skinning spellbook. One entry per beast,
+    -- ordered to match the quest array: Eversong, Zul'Aman, Harandar, Voidstorm, Grand Beast.
+    LureKeywords = {"eversong", "zul", "harandar", "voidstorm", "grand"},
+    Tooltip = {
+        UsedToday = "Skinned today",
+        Available  = "Available",
+          WaypointAdd    = "[+] Waypoint",
+          WaypointRemove = "[x] Waypoint",

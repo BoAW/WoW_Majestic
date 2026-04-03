@@ -17,7 +17,12 @@
         Label6 = "  details - Zeigt Addon-Version, Build-Informationen und Lokalisierungsstatus",
         Label7 = "  status - Queststatus prüfen",
         Label8 = "  way - Status prüfen, Wegpunkte für offene hinzufügen und erledigte entfernen",
-        ClearDone = "Majestic-Wegpunkte (TomTom) wurden entfernt."
+        ClearDone = "Majestic-Wegpunkte (TomTom) wurden entfernt.",
+        VersionLoaded = "Majestic Version %s",
+        NoTomTom = "Majestic: TomTom ist nicht installiert. Wegpunkt-Funktionen sind nicht verf\195\188gbar.",
+        DebugPrefix = "Majestic-Debug: ",
+        DebugOn  = "AN",
+        DebugOff = "AUS"
     },
     Zones = {
         Eversong = "Eversang (Geisterklauenältester)",
@@ -25,5 +30,12 @@
         Harandar = "Harandar (Lumenflosse)",
         Voidstorm = "Voidstorm (Umbrafang)",
         ZulAman = "Zul'Aman (Silberschuppe)",
+    },
+    LureKeywords = {"eversong", "zul", "harandar", "voidstorm", "grand"},
+    Tooltip = {
+        UsedToday = "Heute gehäutet",
+        Available  = "Verfügbar",
+        WaypointAdd    = "[+] Wegpunkt",
+        WaypointRemove = "[x] Wegpunkt",
     },
 }

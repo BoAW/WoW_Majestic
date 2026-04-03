@@ -17,7 +17,12 @@
         Label6 = "  details - Mostra la versione dell'addon, le informazioni di compilazione e lo stato della localizzazione",
         Label7 = "  status - Controlla lo stato delle missioni",
         Label8 = "  way - Controlla stato, aggiungi punti incompleti e rimuovi completati",
-        ClearDone = "Punti Majestic (TomTom) rimossi."
+        ClearDone = "Punti Majestic (TomTom) rimossi.",
+        VersionLoaded = "Majestic versione %s",
+        NoTomTom = "Majestic: TomTom non \195\168 installato. Le funzioni di punto di percorso non saranno disponibili.",
+        DebugPrefix = "Majestic debug: ",
+        DebugOn  = "ATTIVO",
+        DebugOff = "DISATTIVO"
     },
     Zones = {
         Eversong = "Eversong (Anziano Artiglio Spettrale)",
@@ -25,5 +30,12 @@
         Harandar = "Harandar (Lumenaleta)",
         Voidstorm = "Voidstorm (Umbrafang)",
         ZulAman = "Zul'Aman (Squama d'Argento)",
+    },
+    LureKeywords = {"eversong", "zul", "harandar", "voidstorm", "grand"},
+    Tooltip = {
+        UsedToday = "Scuoiato oggi",
+        Available  = "Disponibile",
+        WaypointAdd    = "[+] Punto",
+        WaypointRemove = "[x] Punto",
     },
 }

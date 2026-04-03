@@ -17,7 +17,12 @@
         Label6 = "  details - 애드온 버전, 빌드 정보 및 현지화 상태 표시",
         Label7 = "  status - 임무 상태 확인",
         Label8 = "  way - 상태 확인, 미완료 경유지 추가 및 완료된 경유지 제거",
-        ClearDone = "Majestic (TomTom) 경유지가 제거되었습니다."
+        ClearDone = "Majestic (TomTom) 경유지가 제거되었습니다.",
+        VersionLoaded = "Majestic 버전 %s",
+        NoTomTom = "Majestic: TomTom이 설치되지 않았습니다. 경유지 기능을 사용할 수 없습니다.",
+        DebugPrefix = "Majestic 디버그: ",
+        DebugOn  = "켜집",
+        DebugOff = "끄집"
     },
     Zones = {
         Eversong = "Eversong (장로 유령발톱)",
@@ -25,5 +30,12 @@
         Harandar = "Harandar (Lumenaleta)",
         Voidstorm = "Voidstorm (Umbrafang)",
         ZulAman = "Zul'Aman (은빛 비늘)",
+    },
+    LureKeywords = {"eversong", "zul", "harandar", "voidstorm", "grand"},
+    Tooltip = {
+        UsedToday = "오늘 채집함",
+        Available  = "오늘 가능",
+        WaypointAdd    = "[+] 경유지",
+        WaypointRemove = "[x] 경유지",
     },
 }

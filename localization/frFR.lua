@@ -17,7 +17,12 @@
         Label6 = "  details - Afficher la version de l'addon, les informations de compilation et le statut de la localisation",
         Label7 = "  status - Vérifier le statut des quêtes",
         Label8 = "  way - Vérifier le statut, ajouter les points incomplets et supprimer les complétés",
-        ClearDone = "Points de passage Majestic (TomTom) supprim\195\169s."
+        ClearDone = "Points de passage Majestic (TomTom) supprim\195\169s.",
+        VersionLoaded = "Majestic version %s",
+        NoTomTom = "Majestic : TomTom n'est pas install\195\169. Les fonctions de rep\195\168re ne seront pas disponibles.",
+        DebugPrefix = "Majestic débogage : ",
+        DebugOn  = "ACTIVÉ",
+        DebugOff = "DÉSACTIVÉ"
     },
     Zones = {
         Eversong = "Chant éternel (Ancien Griffefantôme)",
@@ -25,5 +30,12 @@
         Harandar = "Harandar (Lumenfin)",
         Voidstorm = "Voidstorm (Umbrafang)",
         ZulAman = "Zul'Aman (Écaille d'argent)",
+    },
+    LureKeywords = {"eversong", "zul", "harandar", "voidstorm", "grand"},
+    Tooltip = {
+        UsedToday = "Dépouillé aujourd'hui",
+        Available  = "Disponible",
+        WaypointAdd    = "[+] Repère",
+        WaypointRemove = "[x] Repère",
     },
 }

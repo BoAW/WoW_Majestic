@@ -17,7 +17,12 @@
         Label6 = "  details - 显示插件版本、构建信息和本地化状态",
         Label7 = "  status - 检查任务状态",
         Label8 = "  way - 检查状态，添加未完成路径点并移除已完成的",
-        ClearDone = "Majestic (TomTom) 路径点已清除。"
+        ClearDone = "Majestic (TomTom) 路径点已清除。",
+        VersionLoaded = "Majestic 版本 %s",
+        NoTomTom = "Majestic：未安装 TomTom，路径点功能将无法使用。",
+        DebugPrefix = "Majestic 调试：",
+        DebugOn  = "开",
+        DebugOff = "关"
     },
     Zones = {
         Eversong = "Eversong (幽灵爪长老)",
@@ -25,5 +30,12 @@
         Harandar = "Harandar (Lumenaleta)",
         Voidstorm = "Voidstorm (Umbrafang)",
         ZulAman = "Zul'Aman (银鳞)",
+    },
+    LureKeywords = {"eversong", "zul", "harandar", "voidstorm", "grand"},
+    Tooltip = {
+        UsedToday = "今日已剥皮",
+        Available  = "今日可用",
+        WaypointAdd    = "[+] 路点",
+        WaypointRemove = "[x] 路点",
     },
 }
