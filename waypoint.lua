@@ -389,7 +389,7 @@ local function _update()
 
     -- Find nearest waypoint: same map by normalized coords, or cross-map by world coords
     -- if both are on the same game instance (e.g. Eversong <-> Zul'Aman).
-    local nearUID, nearDist, nearAngle, nearTitle
+    local nearUID, nearDist, nearAngle, nearTitle, nearGoTo
 
     if _pinnedUID and _waypoints[_pinnedUID] then
         local wp = _waypoints[_pinnedUID]
@@ -409,6 +409,14 @@ local function _update()
                 nearTitle = wp.title
                 nearUID   = _pinnedUID
             end
+        end
+        -- Pinned selection always wins even if distance/angle can't be computed
+        if not nearUID then
+            nearUID   = _pinnedUID
+            nearTitle = wp.title
+            nearAngle = 0
+            nearDist  = 0
+            nearGoTo  = true
         end
     end
 
@@ -466,7 +474,13 @@ local function _update()
     -- rotation = -(nearAngle + facing) rotates the arrow to match the world direction.
     local facing = GetPlayerFacing() or 0
     _arrow.tex:SetRotation(-(nearAngle + facing))
-    _arrow.dist:SetText(_formatDist(nearDist))
+    if nearGoTo then
+        local mapInfo = C_Map.GetMapInfo(_waypoints[nearUID].mapID)
+        local mapName = mapInfo and mapInfo.name or "?"
+        _arrow.dist:SetText(string.format(_locale.Arrow.GoTo, mapName))
+    else
+        _arrow.dist:SetText(_formatDist(nearDist))
+    end
     _arrow.title:SetText(nearTitle:gsub("^(.+) %((.+)%)$", "%2\n%1"))
     _nearUID = nearUID
     _arrow:Show()

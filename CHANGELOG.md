@@ -9,6 +9,12 @@
 - Fixed overlay nil error on first clear
 - Removed obsolete `NoTomTom` locale strings from all 9 locales
 - Removed "(TomTom)" label from `ClearDone` strings in all 9 locales
+- Remove Current always visible in right-click menu
+- Fixed arrow tracking wrong waypoint after removal
+- Right-click lure selector shows all active waypoints
+- Selected lure persists across /reload
+- Shows "Go to <Zone>" when selected lure is on a different map
+- Lure menu labels show creature and zone name
 
 ## 1.0.0
 - Quest status: /mj status, /mj way, /mj all, /mj clear

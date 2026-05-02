@@ -34,6 +34,20 @@ local lureSpellIDs = {
 
 -- Print version to chat once the UI is ready
 local f = CreateFrame("Frame")
+local function _savePinnedIndex()
+    MajesticArrowDB = MajesticArrowDB or {}
+    local target = MajesticWP:GetTarget()
+    if target then
+        for i, uid in pairs(activeWaypoints) do
+            if uid == target then
+                MajesticArrowDB.pinnedIndex = i
+                return
+            end
+        end
+    end
+    MajesticArrowDB.pinnedIndex = nil
+end
+
 local function _saveActiveWaypoints()
     MajesticArrowDB = MajesticArrowDB or {}
     local saved = {}
@@ -41,6 +55,7 @@ local function _saveActiveWaypoints()
         saved[i] = uid and true or nil
     end
     MajesticArrowDB.savedWaypoints = saved
+    _savePinnedIndex()
 end
 
 f:RegisterEvent("PLAYER_LOGIN")
@@ -56,6 +71,10 @@ f:SetScript("OnEvent", function()
                 activeWaypoints[i] = MajesticWP:Add(mapID, x/100, y/100, desc)
             end
         end
+    end
+    local pinnedIndex = MajesticArrowDB.pinnedIndex
+    if pinnedIndex and activeWaypoints[pinnedIndex] then
+        MajesticWP:SetTarget(activeWaypoints[pinnedIndex])
     end
 end)
 
@@ -393,11 +412,10 @@ end
 
 -- ── Arrow context menu: lure switcher ─────────────────────────────────────
 MajesticWP:SetMenuHook(function(root)
-    local playerMap = C_Map.GetBestMapForUnit("player")
     local available = {}
     for i, uid in pairs(activeWaypoints) do
-        if uid and waypoints[i] and waypoints[i][1] == playerMap then
-            local label = n[i]:gsub("^(.+) %((.+)%)$", "%2")
+        if uid and waypoints[i] then
+            local label = n[i]:gsub("^(.+) %((.+)%)$", "%2 - %1")
             table.insert(available, {uid = uid, label = label})
         end
     end
@@ -405,11 +423,11 @@ MajesticWP:SetMenuHook(function(root)
     root:CreateDivider()
     root:CreateTitle("Lure")
     root:CreateRadio("Nearest", function() return MajesticWP:GetTarget() == nil end,
-                                function() MajesticWP:SetTarget(nil) end)
+                                function() MajesticWP:SetTarget(nil); _savePinnedIndex() end)
     for _, entry in ipairs(available) do
         local uid = entry.uid
         root:CreateRadio(entry.label,
             function() return MajesticWP:GetTarget() == uid end,
-            function() MajesticWP:SetTarget(uid) end)
+            function() MajesticWP:SetTarget(uid); _savePinnedIndex() end)
     end
 end)

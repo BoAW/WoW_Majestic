@@ -10,6 +10,12 @@ _cl["enUS"] = [=[
   |cffcccccc• Tooltip waypoint button now has a dark background|r
   |cffcccccc• /mj clear immediately updates overlay button text|r
   |cffcccccc• Fixed overlay nil error on first clear|r
+  |cffcccccc• Remove Current always visible in right-click menu|r
+  |cffcccccc• Fixed arrow tracking wrong waypoint after removal|r
+  |cffcccccc• Right-click lure selector shows all active waypoints|r
+  |cffcccccc• Selected lure persists across /reload|r
+  |cffcccccc• Shows "Go to <Zone>" when selected lure is on a different map|r
+  |cffcccccc• Lure menu labels show creature and zone name|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Quest status: /mj status, /mj way, /mj all, /mj clear|r
@@ -38,6 +44,12 @@ _cl["deDE"] = [=[
   |cffcccccc• Tooltip-Wegpunkt-Schaltfläche hat jetzt einen dunklen Hintergrund|r
   |cffcccccc• /mj clear aktualisiert den Overlay-Text sofort|r
   |cffcccccc• Nil-Fehler beim ersten Löschen behoben|r
+  |cffcccccc• „Aktuellen entfernen“ im Rechtsklick-Menü immer sichtbar|r
+  |cffcccccc• Pfeil verfolgte nach dem Entfernen falsche Wegpunkte – behoben|r
+  |cffcccccc• Köder-Auswahl zeigt alle aktiven Wegpunkte|r
+  |cffcccccc• Ausgewählter Köder bleibt nach /reload erhalten|r
+  |cffcccccc• „Gehe zu <Zone>“ wenn Köder auf einer anderen Karte ist|r
+  |cffcccccc• Köder-Menü zeigt Kreatur und Zonenname|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Queststatus: /mj status, /mj way, /mj all, /mj clear|r
@@ -66,6 +78,12 @@ _cl["frFR"] = [=[
   |cffcccccc• Le bouton de point de passage dans l'info-bulle a maintenant un fond sombre|r
   |cffcccccc• /mj clear met à jour immédiatement le texte du bouton|r
   |cffcccccc• Correction de l'erreur nil lors du premier effacement|r
+  |cffcccccc• "Supprimer l'actuel" toujours visible dans le menu contextuel|r
+  |cffcccccc• Correction de la flèche ciblant le mauvais point de passage|r
+  |cffcccccc• Le sélecteur d'appât affiche tous les points de passage actifs|r
+  |cffcccccc• L'appât sélectionné persiste après /reload|r
+  |cffcccccc• Affiche "Aller à <Zone>" quand l'appât est sur une autre carte|r
+  |cffcccccc• Les étiquettes du menu affichent créature et zone|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Statut des quêtes : /mj status, /mj way, /mj all, /mj clear|r
@@ -94,6 +112,12 @@ _cl["esES"] = [=[
   |cffcccccc• El botón de punto de ruta en el tooltip ahora tiene fondo oscuro|r
   |cffcccccc• /mj clear actualiza inmediatamente el texto del botón|r
   |cffcccccc• Corregido error nil al limpiar por primera vez|r
+  |cffcccccc• "Eliminar actual" siempre visible en el menú contextual|r
+  |cffcccccc• Corregida la flecha rastreando el punto de ruta equivocado|r
+  |cffcccccc• El selector de señuelo muestra todos los puntos de ruta activos|r
+  |cffcccccc• El señuelo seleccionado persiste tras /reload|r
+  |cffcccccc• Muestra "Ir a <Zona>" cuando el señuelo está en otro mapa|r
+  |cffcccccc• Las etiquetas del menú muestran criatura y zona|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Estado de misiones: /mj status, /mj way, /mj all, /mj clear|r
@@ -124,6 +148,12 @@ _cl["ruRU"] = [=[
   |cffcccccc• Кнопка путевой точки в подсказке теперь имеет тёмный фон|r
   |cffcccccc• /mj clear немедленно обновляет текст кнопки|r
   |cffcccccc• Исправлена ошибка nil при первом очищении|r
+  |cffcccccc• «Удалить текущий» всегда виден в контекстном меню|r
+  |cffcccccc• Исправлено: стрелка отслеживала неверную точку после удаления|r
+  |cffcccccc• Выбор приманки показывает все активные путевые точки|r
+  |cffcccccc• Выбранная приманка сохраняется после /reload|r
+  |cffcccccc• «Перейти к <Зона>» если приманка на другой карте|r
+  |cffcccccc• Метки меню показывают существо и зону|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Статус заданий: /mj status, /mj way, /mj all, /mj clear|r
@@ -149,9 +179,15 @@ _cl["zhCN"] = [=[
   |cffcccccc• 移除TomTom依赖 — 路径点完全内置|r
   |cffcccccc• 路径点在/reload后保持（SavedVariables）|r
   |cffcccccc• 小地图和世界地图图标使用插件贴图|r
-  |cffcccccc• 提示框路径点按钮现在有深色背景|r
-  |cffcccccc• /mj clear立即更新浮层按钮文字|r
+  |cffcccccc• 提示框路径点按鈕现在有深色背景|r
+  |cffcccccc• /mj clear立即更新浮层按鈕文字|r
   |cffcccccc• 修复首次清除时的nil错误|r
+  |cffcccccc• 右键菜单中“移除当前”始终可见|r
+  |cffcccccc• 修复删除后箭头追踪错误路径点的问题|r
+  |cffcccccc• 右键诱饵选择器显示所有活跃路径点|r
+  |cffcccccc• 所选诱饵在/reload后保持|r
+  |cffcccccc• 所选诱饵在不同地图时显示“前往<区域>”|r
+  |cffcccccc• 菜单标签显示生物和区域名称|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• 任务状态：/mj status、/mj way、/mj all、/mj clear|r
@@ -182,6 +218,12 @@ _cl["koKR"] = [=[
   |cffcccccc• 툴팁 경유지 버튼에 어두운 배경 추가|r
   |cffcccccc• /mj clear 즉시 오버레이 버튼 텍스트 업데이트|r
   |cffcccccc• 첫 번째 지우기 시 nil 오류 수정|r
+  |cffcccccc• 오른쪽 클릭 메뉴에서 "현재 제거" 항상 표시|r
+  |cffcccccc• 경유지 제거 후 화살표가 잘못된 경유지를 추적하는 문제 수정|r
+  |cffcccccc• 오른쪽 클릭 미끼 선택기에 모든 활성 경유지 표시|r
+  |cffcccccc• 선택한 미끼가 /reload 후에도 유지됨|r
+  |cffcccccc• 선택한 미끼가 다른 지도에 있을 때 "이동: <지역>" 표시|r
+  |cffcccccc• 메뉴 레이블에 생물 및 지역 이름 표시|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• 임무 상태: /mj status, /mj way, /mj all, /mj clear|r
@@ -210,6 +252,12 @@ _cl["itIT"] = [=[
   |cffcccccc• Il pulsante del punto di percorso nel tooltip ha ora uno sfondo scuro|r
   |cffcccccc• /mj clear aggiorna immediatamente il testo del pulsante|r
   |cffcccccc• Corretto errore nil alla prima cancellazione|r
+  |cffcccccc• "Rimuovi attuale" sempre visibile nel menu contestuale|r
+  |cffcccccc• Corretto: freccia tracciava il punto sbagliato dopo la rimozione|r
+  |cffcccccc• Il selettore di esca mostra tutti i punti di percorso attivi|r
+  |cffcccccc• L'esca selezionata persiste dopo /reload|r
+  |cffcccccc• Mostra "Vai a <Zona>" quando l'esca è su una mappa diversa|r
+  |cffcccccc• Le etichette del menu mostrano creatura e zona|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Stato missioni: /mj status, /mj way, /mj all, /mj clear|r
@@ -238,6 +286,12 @@ _cl["ptBR"] = [=[
   |cffcccccc• O botão de ponto de percurso no tooltip agora tem fundo escuro|r
   |cffcccccc• /mj clear atualiza imediatamente o texto do botão|r
   |cffcccccc• Corrigido erro nil ao limpar pela primeira vez|r
+  |cffcccccc• "Remover atual" sempre visível no menu de contexto|r
+  |cffcccccc• Corrigido: seta rastreava o ponto de percurso errado após remoção|r
+  |cffcccccc• O seletor de isca mostra todos os pontos de percurso ativos|r
+  |cffcccccc• A isca selecionada persiste após /reload|r
+  |cffcccccc• Mostra "Ir para <Zona>" quando a isca está em outro mapa|r
+  |cffcccccc• Rótulos do menu mostram criatura e zona|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Status de missões: /mj status, /mj way, /mj all, /mj clear|r
@@ -266,6 +320,12 @@ _cl["daDA"] = [=[
   |cffcccccc• Tooltip-waypointknap har nu mørk baggrund|r
   |cffcccccc• /mj clear opdaterer straks overlay-knapteksten|r
   |cffcccccc• Rettet nil-fejl ved første rydning|r
+  |cffcccccc• "Fjern nuværende" altid synlig i højreklik-menuen|r
+  |cffcccccc• Rettet: pilen sporede forkert waypoint efter fjernelse|r
+  |cffcccccc• Højreklik-lokkevalg viser alle aktive waypoints|r
+  |cffcccccc• Valgt lokkemiddel bevares efter /reload|r
+  |cffcccccc• Viser "Gå til <Zone>" når lokkemiddel er på et andet kort|r
+  |cffcccccc• Menuetiketter viser kreatur og zonenavn|r
 
 |cffffd700v1.0.0|r
   |cffcccccc• Quest-status: /mj status, /mj way, /mj all, /mj clear|r
