@@ -1,34 +1,32 @@
 # Majestic – Changelog
 
 ## 2.0.0
-- **Removed TomTom dependency** – waypoints are now fully built-in (minimap pin, world map pin, HUD arrow)
-- Waypoints now persist across `/reload` via SavedVariables
-- World map and minimap icons use the addon's own icon texture (4621573)
-- Tooltip overlay button now shows a dark background for readability
-- Fixed: `/mj clear` now immediately updates visible tooltip overlay button text
-- Fixed: overlay button text error on clear when overlays table was not yet initialised
+- Removed TomTom dependency — waypoints fully built-in
+- Waypoints persist across /reload (SavedVariables)
+- Minimap and world map icons use addon texture
+- Tooltip waypoint button now has a dark background
+- /mj clear immediately updates overlay button text
+- Fixed overlay nil error on first clear
 - Removed obsolete `NoTomTom` locale strings from all 9 locales
 - Removed "(TomTom)" label from `ClearDone` strings in all 9 locales
 
 ## 1.0.0
-- Initial release
-- Quest status check via `/mj status`, `/mj way`, `/mj all`, `/mj clear`
-- TomTom integration for world map and minimap waypoints
-- HUD directional arrow with drag, lock, and size options
-- Tooltip overlay on lure spells/items showing availability and waypoint toggle
-- Full localisation: enUS, deDE, esES, frFR, itIT, koKR, ptBR, ruRU, zhCN
-- Addon icon texture and updated title added to TOC
-- Fixed: locale encoding — replaced octal escape sequences with UTF-8 literals in frFR, deDE, esES, itIT
+- Quest status: /mj status, /mj way, /mj all, /mj clear
+- TomTom integration for minimap and world map
+- HUD directional arrow (drag, lock, size)
+- Lure tooltip overlay: Available / Skinned today
+- Full localisation: 9 locales
+- Addon icon and title added to TOC
+- Fixed locale encoding (UTF-8 literals)
 - Fixed: empty error output from locale files (frFR, koKR)
 - Fixed: missing table endings in enUS locale
 
 ## 0.2.0
-- Bumped version to 0.2.0
-- Fixed: `MajesticCheckLureTooltip` nil error on `data.id` — extract spell/item ID via `GetSpell()`/`GetItem()` when no data argument is provided (legacy HookScript fallback)
-- Fixed: locale encoding — replaced octal escape sequences with UTF-8 literals in frFR, deDE, esES, itIT, koKR
+- Fixed nil error on tooltip data.id (legacy API)
+- Replaced octal escape sequences in locale files
 
 ## 0.1.0
-- Added lure tooltip status overlay showing "Available" (green) or "Skinned today" (red)
-- Added clickable waypoint button on lure tooltip hover; hides on mouse leave
-- Changed TomTom from `RequiredDeps` to `OptionalDeps`; login warning shown if missing
-- Added locale keys across all 9 locales: `WaypointAdd`, `WaypointRemove`, `VersionLoaded`, `NoTomTom`, `DebugPrefix`, `DebugOn`, `DebugOff`
+- Lure tooltip: Available (green) / Skinned today (red)
+- Clickable waypoint button on lure tooltip hover
+- TomTom changed from RequiredDeps to OptionalDeps
+- Added locale keys across all 9 locales
