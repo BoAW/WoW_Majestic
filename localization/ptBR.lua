@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] Marcador",
         WaypointRemove = "[x] Marcador",
     },
+    Arrow = {
+        GoTo = "Ir para %s",
+    },
+    Menu = {
+        Title         = "Seta Majestic",
+        Lock          = "Bloquear",
+        Unlock        = "Desbloquear",
+        Size          = "Tamanho...",
+        BgColor       = "Cor de fundo...",
+        RemoveCurrent = "Remover atual",
+        RemoveAll     = "Remover todos",
+        SizesTitle    = "Tamanhos",
+    },
 }

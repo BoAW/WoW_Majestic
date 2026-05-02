@@ -1,8 +1,9 @@
-﻿local q = {88545, 88526, 88531, 88532, 88524}
+﻿local addonName = ...   -- WoW passes the folder/addon name as the first vararg
+local q = {88545, 88526, 88531, 88532, 88524}
 local locale = GetLocale()
 local L = _G["Majestic_Locale_" .. locale] or Majestic_Locale_enUS
 
-local addonVersion = C_AddOns.GetAddOnMetadata("Majestic", "Version") or "?"
+local addonVersion = C_AddOns.GetAddOnMetadata(addonName, "Version") or "?"
 
 local monthAbbrevToIndex = {
     Jan = 1, Feb = 2, Mar = 3, Apr = 4, May = 5, Jun = 6,
@@ -20,6 +21,7 @@ local waypoints = {
 
 local activeWaypoints = {}
 local majesticDebug = false
+local majesticOverlays = {}  -- owner frame -> overlay Button frame
 
 -- Lure spell ID -> index into q[]. Order: Eversong, Zul'Aman, Harandar, Voidstorm, Grand Beast.
 local lureSpellIDs = {
@@ -32,11 +34,28 @@ local lureSpellIDs = {
 
 -- Print version to chat once the UI is ready
 local f = CreateFrame("Frame")
+local function _saveActiveWaypoints()
+    MajesticArrowDB = MajesticArrowDB or {}
+    local saved = {}
+    for i, uid in pairs(activeWaypoints) do
+        saved[i] = uid and true or nil
+    end
+    MajesticArrowDB.savedWaypoints = saved
+end
+
 f:RegisterEvent("PLAYER_LOGIN")
 f:SetScript("OnEvent", function()
     print("|cff00ff00" .. string.format(L.Help.VersionLoaded or "Majestic version %s", addonVersion) .. "|r")
-    if not TomTom then
-        print("|cffff4444" .. (L.Help.NoTomTom or "Majestic: TomTom is not installed. Waypoint features will not work.") .. "|r")
+    -- Restore waypoints saved before last reload
+    MajesticArrowDB = MajesticArrowDB or {}
+    local saved = MajesticArrowDB.savedWaypoints
+    if saved then
+        for i, _ in pairs(saved) do
+            if waypoints[i] and not activeWaypoints[i] then
+                local mapID, x, y, desc = unpack(waypoints[i])
+                activeWaypoints[i] = MajesticWP:Add(mapID, x/100, y/100, desc)
+            end
+        end
     end
 end)
 
@@ -45,23 +64,28 @@ local function Majestic_Check(mode)
         local r = C_QuestLog.IsQuestFlaggedCompleted(q[i])
         local c = r and 1 or 0
         DEFAULT_CHAT_FRAME:AddMessage(n[i], 1 - c, c, 0)
-        if TomTom then
-            if mode == "all" then
-                local mapID, x, y, desc = unpack(waypoints[i])
-                local uid = TomTom:AddWaypoint(mapID, x/100, y/100, {title = desc})
-                if uid then activeWaypoints[i] = uid end
-            elseif mode == "way" then
-                if not r then
+        if mode == "all" then
+            if activeWaypoints[i] then
+                MajesticWP:Remove(activeWaypoints[i])
+                activeWaypoints[i] = nil
+            end
+            local mapID, x, y, desc = unpack(waypoints[i])
+            local uid = MajesticWP:Add(mapID, x/100, y/100, desc)
+            activeWaypoints[i] = uid
+        elseif mode == "way" then
+            if not r then
+                if not activeWaypoints[i] then
                     local mapID, x, y, desc = unpack(waypoints[i])
-                    local uid = TomTom:AddWaypoint(mapID, x/100, y/100, {title = desc})
-                    if uid then activeWaypoints[i] = uid end
-                elseif activeWaypoints[i] then
-                    TomTom:RemoveWaypoint(activeWaypoints[i])
-                    activeWaypoints[i] = nil
+                    local uid = MajesticWP:Add(mapID, x/100, y/100, desc)
+                    activeWaypoints[i] = uid
                 end
+            elseif activeWaypoints[i] then
+                MajesticWP:Remove(activeWaypoints[i])
+                activeWaypoints[i] = nil
             end
         end
     end
+    _saveActiveWaypoints()
 end
 
 local function Majestic_SlashHandler(msg)
@@ -72,19 +96,35 @@ local function Majestic_SlashHandler(msg)
             if line then DEFAULT_CHAT_FRAME:AddMessage(line) end
         end
     elseif msg == "clear" then
-        if TomTom then
-            for i, uid in pairs(activeWaypoints) do
-                TomTom:RemoveWaypoint(uid)
+        MajesticWP:RemoveAll()
+        wipe(activeWaypoints)
+        _saveActiveWaypoints()
+        for _, ov in pairs(majesticOverlays) do
+            if ov:IsShown() then
+                ov.fs:SetText("|cff00ff00" .. (L.Tooltip.WaypointAdd or "[+] Waypoint") .. "|r")
             end
-            wipe(activeWaypoints)
-            DEFAULT_CHAT_FRAME:AddMessage(L.Help.ClearDone or "Majestic waypoints cleared.")
         end
+        DEFAULT_CHAT_FRAME:AddMessage(L.Help.ClearDone or "Majestic waypoints cleared.")
     elseif msg == "status" then
         Majestic_Check("status")
     elseif msg == "way" then
         Majestic_Check("way")
     elseif msg == "all" then
         Majestic_Check("all")
+    elseif msg == "lock" then
+        MajesticWP:SetLocked(true)
+        DEFAULT_CHAT_FRAME:AddMessage("|cffaaaaaa[Majestic]|r Arrow locked.")
+    elseif msg == "unlock" then
+        MajesticWP:SetLocked(false)
+        DEFAULT_CHAT_FRAME:AddMessage("|cffaaaaaa[Majestic]|r Arrow unlocked.")
+    elseif msg:match("^size (.+)$") then
+        local val = tonumber(msg:match("^size (.+)$"))
+        if val then
+            MajesticWP:SetSize(val)
+            DEFAULT_CHAT_FRAME:AddMessage("|cffaaaaaa[Majestic]|r Arrow size: " .. math.max(32, math.min(80, math.floor(val + 0.5))))
+        else
+            DEFAULT_CHAT_FRAME:AddMessage("|cffaaaaaa[Majestic]|r Valid sizes: 32-80")
+        end
     elseif msg == "debug" then
         majesticDebug = not majesticDebug
         DEFAULT_CHAT_FRAME:AddMessage((L.Help.DebugPrefix or "Majestic debug: ") .. (majesticDebug and "|cff00ff00" .. (L.Help.DebugOn or "ON") .. "|r" or "|cffff4444" .. (L.Help.DebugOff or "OFF") .. "|r"))
@@ -135,16 +175,21 @@ local function Majestic_SlashHandler(msg)
     end
 end
 
-SLASH_MAJESTIC1 = "/majestic"
-SLASH_MAJESTIC2 = "/mj"
-SlashCmdList["MAJESTIC"] = Majestic_SlashHandler
+-- Use the addon folder name as the slash-command key so the release build
+-- ("Majestic") and the beta build ("MajesticBeta") never share a command.
+local cmdKey  = addonName:upper()                        -- "MAJESTIC" or "MAJESTICBETA"
+local cmd1    = "/" .. addonName:lower()                 -- "/majestic" or "/majesticbeta"
+local cmd2    = addonName == "Majestic" and "/mj" or "/mjb"
+
+_G["SLASH_" .. cmdKey .. "1"] = cmd1
+_G["SLASH_" .. cmdKey .. "2"] = cmd2
+SlashCmdList[cmdKey] = Majestic_SlashHandler
 
 -- ---------------------------------------------------------------------------
 -- Tooltip: append Available / Skinned today, plus waypoint button on hover.
 -- ---------------------------------------------------------------------------
 
 local majesticLastDebugID = nil
-local majesticOverlays = {}  -- owner frame -> overlay Button frame
 
 local function MajesticCheckLureTooltip(tooltip, data)
     -- Hide all overlays on every call so nothing lingers on other items.
@@ -194,11 +239,14 @@ local function MajesticCheckLureTooltip(tooltip, data)
         tooltip:AddLine(L.Tooltip and L.Tooltip.Available or "Available", 0.35, 1, 0.35)
     end
 
-    if TomTom and owner then
+    if owner then
         if not majesticOverlays[owner] then
             local overlay = CreateFrame("Button", nil, owner)
             overlay:SetSize(100, 18)
             overlay:SetPoint("TOP", owner, "BOTTOM", 0, -2)
+            local bg = overlay:CreateTexture(nil, "BACKGROUND")
+            bg:SetAllPoints()
+            bg:SetColorTexture(0, 0, 0, 0.6)
             overlay:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
             local fs = overlay:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
             fs:SetAllPoints()
@@ -206,14 +254,13 @@ local function MajesticCheckLureTooltip(tooltip, data)
             overlay.fs = fs
             overlay:SetScript("OnClick", function(self)
                 local i = self._idx
-                if not i or not TomTom then return end
+                if not i then return end
                 if activeWaypoints[i] then
-                    TomTom:RemoveWaypoint(activeWaypoints[i])
+                    MajesticWP:Remove(activeWaypoints[i])
                     activeWaypoints[i] = nil
                 else
                     local mapID, x, y, desc = unpack(waypoints[i])
-                    local uid = TomTom:AddWaypoint(mapID, x/100, y/100, {title = desc})
-                    if uid then activeWaypoints[i] = uid end
+                    activeWaypoints[i] = MajesticWP:Add(mapID, x/100, y/100, desc)
                 end
                 self.fs:SetText(activeWaypoints[i] and "|cffff9900" .. (L.Tooltip.WaypointRemove or "[x] Waypoint") .. "|r" or "|cff00ff00" .. (L.Tooltip.WaypointAdd or "[+] Waypoint") .. "|r")
             end)
@@ -247,3 +294,26 @@ else
     GameTooltip:HookScript("OnTooltipSetSpell", MajesticCheckLureTooltip)
     GameTooltip:HookScript("OnTooltipSetItem",  MajesticCheckLureTooltip)
 end
+
+-- ── Arrow context menu: lure switcher ─────────────────────────────────────
+MajesticWP:SetMenuHook(function(root)
+    local playerMap = C_Map.GetBestMapForUnit("player")
+    local available = {}
+    for i, uid in pairs(activeWaypoints) do
+        if uid and waypoints[i] and waypoints[i][1] == playerMap then
+            local label = n[i]:gsub("^(.+) %((.+)%)$", "%2")
+            table.insert(available, {uid = uid, label = label})
+        end
+    end
+    if #available < 2 then return end
+    root:CreateDivider()
+    root:CreateTitle("Lure")
+    root:CreateRadio("Nearest", function() return MajesticWP:GetTarget() == nil end,
+                                function() MajesticWP:SetTarget(nil) end)
+    for _, entry in ipairs(available) do
+        local uid = entry.uid
+        root:CreateRadio(entry.label,
+            function() return MajesticWP:GetTarget() == uid end,
+            function() MajesticWP:SetTarget(uid) end)
+    end
+end)

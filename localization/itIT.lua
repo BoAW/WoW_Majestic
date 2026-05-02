@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] Punto",
         WaypointRemove = "[x] Punto",
     },
+    Arrow = {
+        GoTo = "Vai a %s",
+    },
+    Menu = {
+        Title         = "Freccia Majestic",
+        Lock          = "Blocca",
+        Unlock        = "Sblocca",
+        Size          = "Dimensione...",
+        BgColor       = "Colore di sfondo...",
+        RemoveCurrent = "Rimuovi attuale",
+        RemoveAll     = "Rimuovi tutti",
+        SizesTitle    = "Dimensioni",
+    },
 }

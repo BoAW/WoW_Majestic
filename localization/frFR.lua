@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] Repère",
         WaypointRemove = "[x] Repère",
     },
+    Arrow = {
+        GoTo = "Aller à %s",
+    },
+    Menu = {
+        Title         = "Flèche Majestic",
+        Lock          = "Verrouiller",
+        Unlock        = "Déverrouiller",
+        Size          = "Taille...",
+        BgColor       = "Couleur de fond...",
+        RemoveCurrent = "Supprimer l'actuel",
+        RemoveAll     = "Tout supprimer",
+        SizesTitle    = "Tailles",
+    },
 }

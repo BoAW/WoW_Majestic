@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] 경유지",
         WaypointRemove = "[x] 경유지",
     },
+    Arrow = {
+        GoTo = "%s(으)로 이동",
+    },
+    Menu = {
+        Title         = "Majestic 화살표",
+        Lock          = "잠금",
+        Unlock        = "잠금 해제",
+        Size          = "크기...",
+        BgColor       = "배경색...",
+        RemoveCurrent = "현재 제거",
+        RemoveAll     = "모두 제거",
+        SizesTitle    = "크기 설정",
+    },
 }

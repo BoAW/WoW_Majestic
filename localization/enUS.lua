@@ -40,4 +40,17 @@ Majestic_Locale_enUS = {
         WaypointAdd    = "[+] Waypoint",
         WaypointRemove = "[x] Waypoint",
     },
+    Arrow = {
+        GoTo = "Go to %s",
+    },
+    Menu = {
+        Title         = "Majestic Arrow",
+        Lock          = "Lock",
+        Unlock        = "Unlock",
+        Size          = "Size...",
+        BgColor       = "Background Color...",
+        RemoveCurrent = "Remove Current",
+        RemoveAll     = "Remove All",
+        SizesTitle    = "Sizes",
+    },
 }

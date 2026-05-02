@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] Маршрут",
         WaypointRemove = "[x] Маршрут",
     },
+    Arrow = {
+        GoTo = "Идти к: %s",
+    },
+    Menu = {
+        Title         = "Стрелка Majestic",
+        Lock          = "Заблокировать",
+        Unlock        = "Разблокировать",
+        Size          = "Размер...",
+        BgColor       = "Цвет фона...",
+        RemoveCurrent = "Удалить текущий",
+        RemoveAll     = "Удалить все",
+        SizesTitle    = "Размеры",
+    },
 }

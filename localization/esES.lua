@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] Ruta",
         WaypointRemove = "[x] Ruta",
     },
+    Arrow = {
+        GoTo = "Ir a %s",
+    },
+    Menu = {
+        Title         = "Flecha Majestic",
+        Lock          = "Bloquear",
+        Unlock        = "Desbloquear",
+        Size          = "Tamaño...",
+        BgColor       = "Color de fondo...",
+        RemoveCurrent = "Eliminar actual",
+        RemoveAll     = "Eliminar todos",
+        SizesTitle    = "Tamaños",
+    },
 }

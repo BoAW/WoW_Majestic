@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] Wegpunkt",
         WaypointRemove = "[x] Wegpunkt",
     },
+    Arrow = {
+        GoTo = "Gehe zu %s",
+    },
+    Menu = {
+        Title         = "Majestic-Pfeil",
+        Lock          = "Sperren",
+        Unlock        = "Entsperren",
+        Size          = "Größe...",
+        BgColor       = "Hintergrundfarbe...",
+        RemoveCurrent = "Aktuellen entfernen",
+        RemoveAll     = "Alle entfernen",
+        SizesTitle    = "Größen",
+    },
 }

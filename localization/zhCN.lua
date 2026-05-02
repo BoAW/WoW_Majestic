@@ -38,4 +38,17 @@
         WaypointAdd    = "[+] 路点",
         WaypointRemove = "[x] 路点",
     },
+    Arrow = {
+        GoTo = "前往 %s",
+    },
+    Menu = {
+        Title         = "Majestic 箭头",
+        Lock          = "锁定",
+        Unlock        = "解锁",
+        Size          = "大小...",
+        BgColor       = "背景颜色...",
+        RemoveCurrent = "移除当前",
+        RemoveAll     = "移除全部",
+        SizesTitle    = "大小设置",
+    },
 }
