@@ -17,9 +17,9 @@
         Label6 = "  details - Показать версию аддона, информацию о сборке и статус локализации",
         Label7 = "  status - Проверить статус заданий",
         Label8 = "  way - Проверить статус, добавить незавершённые и удалить завершённые",
-        ClearDone = "Путевые точки Majestic (TomTom) удалены.",
+        ClearDone = "Путевые точки Majestic удалены.",
         VersionLoaded = "Majestic версия %s",
-        NoTomTom = "Majestic: TomTom не установлен. Функции путевых точек недоступны.",
+
         DebugPrefix = "Majestic отладка: ",
         DebugOn  = "ВКЛ",
         DebugOff = "ВЫКЛ"

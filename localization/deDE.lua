@@ -17,9 +17,9 @@
         Label6 = "  details - Zeigt Addon-Version, Build-Informationen und Lokalisierungsstatus",
         Label7 = "  status - Queststatus prüfen",
         Label8 = "  way - Status prüfen, Wegpunkte für offene hinzufügen und erledigte entfernen",
-        ClearDone = "Majestic-Wegpunkte (TomTom) wurden entfernt.",
+        ClearDone = "Majestic-Wegpunkte wurden entfernt.",
         VersionLoaded = "Majestic Version %s",
-        NoTomTom = "Majestic: TomTom ist nicht installiert. Wegpunkt-Funktionen sind nicht verfügbar.",
+
         DebugPrefix = "Majestic-Debug: ",
         DebugOn  = "AN",
         DebugOff = "AUS"

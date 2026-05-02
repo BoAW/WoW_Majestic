@@ -17,9 +17,9 @@
         Label6 = "  details - Afficher la version de l'addon, les informations de compilation et le statut de la localisation",
         Label7 = "  status - Vérifier le statut des quêtes",
         Label8 = "  way - Vérifier le statut, ajouter les points incomplets et supprimer les complétés",
-        ClearDone = "Points de passage Majestic (TomTom) supprimés.",
+        ClearDone = "Points de passage Majestic supprimés.",
         VersionLoaded = "Majestic version %s",
-        NoTomTom = "Majestic : TomTom n'est pas installé. Les fonctions de repère ne seront pas disponibles.",
+
         DebugPrefix = "Majestic débogage : ",
         DebugOn  = "ACTIVÉ",
         DebugOff = "DÉSACTIVÉ"

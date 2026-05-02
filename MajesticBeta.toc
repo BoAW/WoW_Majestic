@@ -1,7 +1,7 @@
 ## Interface: 120001, 120005
 ## Title: Majestic Lure |cffff9900[Beta]|r
 ## Author: Pocahuntress (Alonsus)
-## Version: 1.1.0-beta
+## Version: 2.0.0-beta
 ## Notes: Majestic beast lure tracker – BETA build. Do not distribute.
 ## IconTexture: 4621573
 ## SavedVariablesPerCharacter: MajesticArrowDB

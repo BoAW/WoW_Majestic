@@ -17,9 +17,9 @@
         Label6 = "  details - Mostra la versione dell'addon, le informazioni di compilazione e lo stato della localizzazione",
         Label7 = "  status - Controlla lo stato delle missioni",
         Label8 = "  way - Controlla stato, aggiungi punti incompleti e rimuovi completati",
-        ClearDone = "Punti Majestic (TomTom) rimossi.",
+        ClearDone = "Punti Majestic rimossi.",
         VersionLoaded = "Majestic versione %s",
-        NoTomTom = "Majestic: TomTom non è installato. Le funzioni di punto di percorso non saranno disponibili.",
+
         DebugPrefix = "Majestic debug: ",
         DebugOn  = "ATTIVO",
         DebugOff = "DISATTIVO"
