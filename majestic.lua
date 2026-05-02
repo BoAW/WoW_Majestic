@@ -88,6 +88,88 @@ local function Majestic_Check(mode)
     _saveActiveWaypoints()
 end
 
+-- ---------------------------------------------------------------------------
+-- Changelog window  (/mj version)
+-- ---------------------------------------------------------------------------
+local changelogText = [=[
+|cffffd700v2.0.0|r
+  |cffcccccc• Removed TomTom dependency — waypoints fully built-in|r
+  |cffcccccc• Waypoints persist across /reload (SavedVariables)|r
+  |cffcccccc• Minimap and world map icons use addon texture|r
+  |cffcccccc• Tooltip waypoint button now has a dark background|r
+  |cffcccccc• /mj clear immediately updates overlay button text|r
+  |cffcccccc• Fixed overlay nil error on first clear|r
+
+|cffffd700v1.0.0|r
+  |cffcccccc• Initial public release|r
+  |cffcccccc• Quest status: /mj status, /mj way, /mj all, /mj clear|r
+  |cffcccccc• TomTom integration for minimap and world map|r
+  |cffcccccc• HUD directional arrow (drag, lock, size)|r
+  |cffcccccc• Lure tooltip overlay: Available / Skinned today|r
+  |cffcccccc• Full localisation: 9 locales|r
+  |cffcccccc• Addon icon and title added to TOC|r
+  |cffcccccc• Fixed locale encoding (UTF-8 literals)|r
+
+|cffffd700v0.2.0|r
+  |cffcccccc• Fixed nil error on tooltip data.id (legacy API)|r
+  |cffcccccc• Replaced octal escape sequences in locale files|r
+
+|cffffd700v0.1.0|r
+  |cffcccccc• Lure tooltip: Available (green) / Skinned today (red)|r
+  |cffcccccc• Clickable waypoint button on lure tooltip hover|r
+  |cffcccccc• TomTom changed from RequiredDeps to OptionalDeps|r
+  |cffcccccc• Added locale keys across all 9 locales|r
+
+|cffffd700v0.0.1|r
+  |cffcccccc• Initial addon structure|r
+  |cffcccccc• Removed GetBuildInfo|r]=]
+
+local changelogFrame = nil
+local function _showChangelogWindow()
+    if changelogFrame then
+        if changelogFrame:IsShown() then
+            changelogFrame:Hide()
+        else
+            changelogFrame:Show()
+        end
+        return
+    end
+
+    local frame = CreateFrame("Frame", "MajesticChangelogFrame", UIParent, "BasicFrameTemplateWithInset")
+    frame:SetSize(440, 480)
+    frame:SetPoint("CENTER")
+    frame:SetMovable(true)
+    frame:EnableMouse(true)
+    frame:RegisterForDrag("LeftButton")
+    frame:SetScript("OnDragStart", frame.StartMoving)
+    frame:SetScript("OnDragStop",  frame.StopMovingOrSizing)
+    frame:SetFrameStrata("DIALOG")
+    frame.TitleText:SetText("Majestic \226\128\147 Changelog v" .. addonVersion)
+
+    local sf = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
+    sf:SetPoint("TOPLEFT",     frame.Inset, "TOPLEFT",     6,  -6)
+    sf:SetPoint("BOTTOMRIGHT", frame.Inset, "BOTTOMRIGHT", -26, 6)
+
+    local content = CreateFrame("Frame", nil, sf)
+    content:SetWidth(376)
+    content:SetHeight(800)
+    sf:SetScrollChild(content)
+
+    local txt = content:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    txt:SetPoint("TOPLEFT", content, "TOPLEFT", 4, -4)
+    txt:SetWidth(368)
+    txt:SetJustifyH("LEFT")
+    txt:SetJustifyV("TOP")
+    txt:SetSpacing(3)
+    txt:SetText(changelogText)
+    txt:SetScript("OnShow", function(self)
+        content:SetHeight(math.max(self:GetStringHeight() + 16, sf:GetHeight()))
+    end)
+
+    changelogFrame = frame
+    frame:Show()
+end
+
 local function Majestic_SlashHandler(msg)
     msg = (msg or ""):lower():trim()
     if msg == "?" or msg == "help" then
@@ -125,6 +207,8 @@ local function Majestic_SlashHandler(msg)
         else
             DEFAULT_CHAT_FRAME:AddMessage("|cffaaaaaa[Majestic]|r Valid sizes: 32-80")
         end
+    elseif msg == "version" then
+        _showChangelogWindow()
     elseif msg == "debug" then
         majesticDebug = not majesticDebug
         DEFAULT_CHAT_FRAME:AddMessage((L.Help.DebugPrefix or "Majestic debug: ") .. (majesticDebug and "|cff00ff00" .. (L.Help.DebugOn or "ON") .. "|r" or "|cffff4444" .. (L.Help.DebugOff or "OFF") .. "|r"))
