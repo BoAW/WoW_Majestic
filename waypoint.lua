@@ -274,11 +274,9 @@ local function _showMenu()
         root:CreateDivider()
         root:CreateButton(_locale.Menu.BgColor, _openColorPicker)
         root:CreateDivider()
-        if _nearUID then
-            root:CreateButton(_locale.Menu.RemoveCurrent, function()
-                MajesticWP:Remove(_nearUID)
-            end)
-        end
+        root:CreateButton(_locale.Menu.RemoveCurrent, function()
+            MajesticWP:Remove(_nearUID)
+        end)
         root:CreateButton(_locale.Menu.RemoveAll, function()
             MajesticWP:RemoveAll()
         end)
@@ -446,16 +444,18 @@ local function _update()
 
     if not nearUID then
         -- All waypoints are on a different game instance – show "Go to <zone>".
-        local nearWP
-        for _, wp in pairs(_waypoints) do nearWP = wp; break end
+        local nearWP, nearWPUID
+        for uid, wp in pairs(_waypoints) do nearWP = wp; nearWPUID = uid; break end
         if nearWP then
             local mapInfo = C_Map.GetMapInfo(nearWP.mapID)
             local mapName = mapInfo and mapInfo.name or "?"
             _arrow.dist:SetText(string.format(_locale.Arrow.GoTo, mapName))
             _arrow.title:SetText(nearWP.title:gsub("^(.+) %((.+)%)$", "%2\n%1"))
             _arrow.tex:SetRotation(0)
+            _nearUID = nearWPUID
             _arrow:Show()
         else
+            _nearUID = nil
             _arrow:Hide()
         end
         return
@@ -504,6 +504,7 @@ function MajesticWP:Remove(uid)
     end
     if wp.mmPin then wp.mmPin:Hide(); wp.mmPin:SetParent(nil) end
     if _pinnedUID == uid then _pinnedUID = nil end
+    if _nearUID == uid then _nearUID = nil end
     _waypoints[uid] = nil
     local count = 0
     for _ in pairs(_waypoints) do count = count + 1 end
