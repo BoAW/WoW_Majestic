@@ -165,13 +165,6 @@ local function Majestic_SlashHandler(msg)
         end
     elseif msg == "clear" then
         MajesticWP:RemoveAll()
-        wipe(activeWaypoints)
-        _saveActiveWaypoints()
-        for _, ov in pairs(majesticOverlays) do
-            if ov:IsShown() then
-                ov.fs:SetText("|cff00ff00" .. (L.Tooltip.WaypointAdd or "[+] Waypoint") .. "|r")
-            end
-        end
         DEFAULT_CHAT_FRAME:AddMessage(L.Help.ClearDone or "Majestic waypoints cleared.")
     elseif msg == "status" then
         Majestic_Check("status")
@@ -333,6 +326,7 @@ local function MajesticCheckLureTooltip(tooltip, data)
                     activeWaypoints[i] = MajesticWP:Add(mapID, x/100, y/100, desc)
                 end
                 self.fs:SetText(activeWaypoints[i] and "|cffff9900" .. (L.Tooltip.WaypointRemove or "[x] Waypoint") .. "|r" or "|cff00ff00" .. (L.Tooltip.WaypointAdd or "[+] Waypoint") .. "|r")
+                _saveActiveWaypoints()
             end)
             overlay:SetScript("OnLeave", function(self)
                 self:Hide()
@@ -363,6 +357,38 @@ if TooltipDataProcessor then
 else
     GameTooltip:HookScript("OnTooltipSetSpell", MajesticCheckLureTooltip)
     GameTooltip:HookScript("OnTooltipSetItem",  MajesticCheckLureTooltip)
+end
+
+-- ── Wrap MajesticWP:Remove / RemoveAll so context-menu removals sync state ─
+local _wpRemove    = MajesticWP.Remove
+local _wpRemoveAll = MajesticWP.RemoveAll
+
+MajesticWP.Remove = function(self, uid)
+    _wpRemove(self, uid)
+    for i, u in pairs(activeWaypoints) do
+        if u == uid then
+            activeWaypoints[i] = nil
+            -- update any visible overlay for this lure
+            for _, ov in pairs(majesticOverlays) do
+                if ov:IsShown() and ov._idx == i then
+                    ov.fs:SetText("|cff00ff00" .. (L.Tooltip.WaypointAdd or "[+] Waypoint") .. "|r")
+                end
+            end
+            _saveActiveWaypoints()
+            break
+        end
+    end
+end
+
+MajesticWP.RemoveAll = function(self)
+    _wpRemoveAll(self)
+    wipe(activeWaypoints)
+    for _, ov in pairs(majesticOverlays) do
+        if ov:IsShown() then
+            ov.fs:SetText("|cff00ff00" .. (L.Tooltip.WaypointAdd or "[+] Waypoint") .. "|r")
+        end
+    end
+    _saveActiveWaypoints()
 end
 
 -- ── Arrow context menu: lure switcher ─────────────────────────────────────
