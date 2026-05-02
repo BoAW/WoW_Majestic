@@ -21,4 +21,5 @@ localization/koKR.lua
 localization/itIT.lua
 localization/ptBR.lua
 waypoint.lua
+changelog.lua
 majestic.lua

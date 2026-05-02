@@ -22,7 +22,8 @@
 
         DebugPrefix = "Majestic 디버그: ",
         DebugOn  = "켜짐",
-        DebugOff = "꺼짐"
+        DebugOff = "꺼짐",
+        ChangelogTitle = "변경 기록"
     },
     Zones = {
         Eversong = "Eversong (장로 유령발톱)",

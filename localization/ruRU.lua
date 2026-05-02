@@ -22,7 +22,8 @@
 
         DebugPrefix = "Majestic отладка: ",
         DebugOn  = "ВКЛ",
-        DebugOff = "ВЫКЛ"
+        DebugOff = "ВЫКЛ",
+        ChangelogTitle = "История изменений"
     },
     Zones = {
         Eversong = "Eversong (Старейшина Призрачный Коготь)",

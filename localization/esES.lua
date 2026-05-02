@@ -22,7 +22,8 @@
 
         DebugPrefix = "Majestic depuración: ",
         DebugOn  = "ACTIVADO",
-        DebugOff = "DESACTIVADO"
+        DebugOff = "DESACTIVADO",
+        ChangelogTitle = "Registro de cambios"
     },
     Zones = {
         Eversong = "Eversong (Anciano Garra Fantasma)",

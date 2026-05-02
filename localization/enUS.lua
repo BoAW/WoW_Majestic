@@ -21,7 +21,8 @@ Majestic_Locale_enUS = {
         VersionLoaded = "Majestic version %s",
         DebugPrefix = "Majestic debug: ",
         DebugOn  = "ON",
-        DebugOff = "OFF"
+        DebugOff = "OFF",
+        ChangelogTitle = "Changelog"
     },
     Zones = {
         Eversong = "Eversong (Ghostclaw Elder)",

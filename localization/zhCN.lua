@@ -22,7 +22,8 @@
 
         DebugPrefix = "Majestic 调试：",
         DebugOn  = "开",
-        DebugOff = "关"
+        DebugOff = "关",
+        ChangelogTitle = "更新日志"
     },
     Zones = {
         Eversong = "Eversong (幽灵爪长老)",

@@ -22,7 +22,8 @@
 
         DebugPrefix = "Majestic debug: ",
         DebugOn  = "ATTIVO",
-        DebugOff = "DISATTIVO"
+        DebugOff = "DISATTIVO",
+        ChangelogTitle = "Note di aggiornamento"
     },
     Zones = {
         Eversong = "Eversong (Anziano Artiglio Spettrale)",

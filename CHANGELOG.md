@@ -32,7 +32,3 @@
 - Added clickable waypoint button on lure tooltip hover; hides on mouse leave
 - Changed TomTom from `RequiredDeps` to `OptionalDeps`; login warning shown if missing
 - Added locale keys across all 9 locales: `WaypointAdd`, `WaypointRemove`, `VersionLoaded`, `NoTomTom`, `DebugPrefix`, `DebugOn`, `DebugOff`
-
-## 0.0.1
-- Initial commit — core addon structure: `majestic.lua`, `majestic.toc`, all 9 locale files
-- Removed `GetBuildInfo` call (not relevant for this addon)

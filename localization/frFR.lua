@@ -22,7 +22,8 @@
 
         DebugPrefix = "Majestic débogage : ",
         DebugOn  = "ACTIVÉ",
-        DebugOff = "DÉSACTIVÉ"
+        DebugOff = "DÉSACTIVÉ",
+        ChangelogTitle = "Journal des modifications"
     },
     Zones = {
         Eversong = "Chant éternel (Ancien Griffefantôme)",

@@ -22,7 +22,8 @@
 
         DebugPrefix = "Majestic-Debug: ",
         DebugOn  = "AN",
-        DebugOff = "AUS"
+        DebugOff = "AUS",
+        ChangelogTitle = "Änderungsprotokoll"
     },
     Zones = {
         Eversong = "Eversang (Geisterklauenältester)",
